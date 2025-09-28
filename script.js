@@ -38,8 +38,8 @@ function ensureVisualizerInit() {
     try {
         audioCtx = audioCtx || new (window.AudioContext || window.webkitAudioContext)();
         analyser = analyser || audioCtx.createAnalyser();
-        analyser.fftSize = 256;
-        analyser.smoothingTimeConstant = 1;
+        analyser.fftSize = 2048;
+        analyser.smoothingTimeConstant = 0.6;
 
         const bufferLen = analyser.frequencyBinCount;
         dataArray = dataArray || new Uint8Array(bufferLen);
@@ -79,10 +79,10 @@ function startVisualizer() {
         if (!analyser || !dataArray) return;
         analyser.getByteFrequencyData(dataArray);
 
-        // for (let i = 0; i < dataArray.length; i++) {
-        //     const boost = 1 + (i / dataArray.length) * 1.5;
-        //     dataArray[i] = Math.min(255, dataArray[i] * boost);
-        // }
+        for (let i = 0; i < dataArray.length; i++) {
+            const boost = 1 + (i / dataArray.length) * 1.5;
+            dataArray[i] = Math.min(255, dataArray[i] * boost);
+        }
 
         const w = Math.max(10, visualizer.clientWidth);
         const h = Math.max(10, visualizer.clientHeight);
