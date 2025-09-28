@@ -24,8 +24,6 @@ body {
 .main {
     height: fit-content;
     width: clamp(15rem, 100vw, 20rem);
-    border: 2px solid rgb(78, 100, 61);
-    padding: 1rem;
     display: flex;
     flex-direction: column;
     gap: 0.5rem;
@@ -34,8 +32,8 @@ body {
 }
 
 .title {
-    width: 100%;
-    height: 100%;
+    height: fit-content;
+    width: clamp(15rem, 100vw, 20rem);
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -63,15 +61,26 @@ body {
     width: 100%;
     display: flex;
     flex-direction: row;
+    align-items: center;
+    justify-content: center;
     gap: .25rem;
 }
 
 .buttons button {
-    height: 2rem;
+    height: 3rem;
     width: 100%;
     background-color: transparent;
     border: 2px solid rgb(78, 100, 61);
     cursor: pointer;
+}
+
+.buttons button:active{
+    height: 2.9rem;
+    width: 95%;
+}
+
+.buttons button:hover{
+    background-color: rgba(78, 100, 61, 0.256);
 }
 
 .inputFolder {
@@ -83,12 +92,21 @@ body {
 }
 
 .folderBtn {
-    height: 2rem;
+    height: 3rem;
     width: 100%;
     display: flex;
     align-items: center;
     justify-content: center;
     cursor: pointer;
+}
+
+.folderBtn:active{
+    height: 3rem;
+    width: 100%;
+}
+
+.folderBtn:hover{
+    background-color: rgba(78, 100, 61, 0.256);
 }
 
 .visualizer {
@@ -105,3 +123,8 @@ body {
     padding: 0.1rem;
 }
 
+@media (max-width: 425px) {
+    body {
+        justify-content: space-between;
+    }
+}
