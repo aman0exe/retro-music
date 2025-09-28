@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Music</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Tiny5&display=swap" rel="stylesheet">
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#161616">
+
+</head>
+
+<body>
+    <div class="visualizer"></div>
+    <div class="main">
+        <div class="title">
+            <p id="title">--</p>
+            <p id="time">-:--/-:--</p>
+        </div>
+        <div class="buttons">
+            <div class="control">
+                <button id="PrevBtn">Prev</button>
+                <button id="PauseBtn" style="display: none;">Pause</button>
+                <button id="PlayBtn">Play</button>
+                <button id="NextBtn">Next</button>
+            </div>
+            <div class="inputFolder">
+                <label for="folderInput" class="folderBtn">Folder</label>
+                <input id="folderInput" type="file" webkitdirectory directory multiple accept=".mp3"
+                    style="display: none;">
+            </div>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+
+</html>
