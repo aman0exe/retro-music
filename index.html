@@ -10,16 +10,29 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Tiny5&display=swap" rel="stylesheet">
     <link rel="manifest" href="manifest.json">
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0&icon_names=play_arrow" />
     <meta name="theme-color" content="#161616">
-
 </head>
 
 <body>
     <div class="title">
         <p id="title">--</p>
-        <p id="time">-:--/-:--</p>
+    </div>
+    <div class="main">
+        <div class="inputFolder">
+            <label for="folderInput" class="folderBtn">Select Folder</label>
+            <input id="folderInput" type="file" webkitdirectory directory multiple accept=".mp3" style="display: none;">
+        </div>
     </div>
     <div class="visualizer"></div>
+    <div class="slider">
+        <button id="RewindBtn" disabled>-10s</button>
+        <div class="timeContainer">
+            <div id="time">-:--/-:--</div>
+        </div>
+        <button id="ForwardBtn" disabled>+10s</button>
+    </div>
     <div class="main">
         <div class="buttons">
             <div class="control">
@@ -28,17 +41,14 @@
                 <button id="PlayBtn">Play</button>
                 <button id="NextBtn">Next</button>
             </div>
-            <div class="inputFolder">
-                <label for="folderInput" class="folderBtn">Select Folder</label>
-                <input id="folderInput" type="file" webkitdirectory directory multiple accept=".mp3"
-                    style="display: none;">
-            </div>
+
         </div>
     </div>
     <script src="script.js"></script>
 </body>
 
 </html>
+
 
 
 
