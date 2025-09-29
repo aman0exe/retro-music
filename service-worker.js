@@ -1,29 +1,53 @@
-const CACHE_NAME = "music-player-cache-v1";
-const FILES_TO_CACHE = [
-  "/",
-  "/index.html",
-  "/style.css",
-  "/script.js"
+const CACHE_NAME = 'retro-mp3-v1';
+
+const urlsToCache = [
+  'index.html',
+  'style.css',
+  'script.js',
+  'manifest.json',
+  'service-worker.js',
+  'logo/logo512.png',
+  'logo/logo192.png'
 ];
 
-self.addEventListener("install", (event) => {
+self.addEventListener('install', (event) => {
+  console.log('[SW] Installing and precaching assets...');
   event.waitUntil(
-    caches.open(CACHE_NAME).then((cache) => cache.addAll(FILES_TO_CACHE))
+    caches.open(CACHE_NAME)
+      .then((cache) => {
+        return cache.addAll(urlsToCache).catch(error => {
+          console.error('[SW] Precache failed for some assets (e.g., missing icon files):', error);
+        });
+      })
   );
-  self.skipWaiting();
 });
 
-self.addEventListener("activate", (event) => {
-  event.waitUntil(
-    caches.keys().then((keys) =>
-      Promise.all(keys.map((key) => key !== CACHE_NAME && caches.delete(key)))
-    )
-  );
-  self.clients.claim();
+self.addEventListener('fetch', (event) => {
+  if (event.request.url.startsWith(self.location.origin)) {
+    event.respondWith(
+      caches.match(event.request)
+        .then((response) => {
+          if (response) {
+            return response;
+          }
+          return fetch(event.request);
+        })
+    );
+  }
 });
 
-self.addEventListener("fetch", (event) => {
-  event.respondWith(
-    caches.match(event.request).then((response) => response || fetch(event.request))
+self.addEventListener('activate', (event) => {
+  console.log('[SW] Activating and cleaning up old caches...');
+  const cacheWhitelist = [CACHE_NAME];
+  event.waitUntil(
+    caches.keys().then((cacheNames) => {
+      return Promise.all(
+        cacheNames.map((cacheName) => {
+          if (cacheWhitelist.indexOf(cacheName) === -1) {
+            return caches.delete(cacheName);
+          }
+        })
+      );
+    })
   );
 });
