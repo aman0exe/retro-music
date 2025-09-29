@@ -1,11 +1,11 @@
 {
-  "name": "Music Player",
-  "short_name": "Player",
-  "start_url": "index.html",
+  "name": "Retro MP3 Folder Player",
+  "short_name": "MP3 Player",
+  "description": "A retro-styled MP3 folder player with offline support.",
+  "start_url": "/music_player.html",
   "display": "standalone",
-  "background_color": "#161616",
-  "theme_color": "#161616",
-  "orientation": "portrait",
+  "background_color": "#1c1f25",
+  "theme_color": "#4CAF50",
   "icons": [
     {
       "src": "logo/logo192.png",
