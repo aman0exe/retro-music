@@ -1,17 +1,24 @@
+@import url('https://fonts.googleapis.com/css2?family=Tiny5&family=Workbench&display=swap');
+
 * {
     padding: 0;
     margin: 0;
     color: rgb(78, 100, 61);
-    font-family: "Tiny5", sans-serif;
+    font-family: "Workbench", sans-serif;
+    font-optical-sizing: auto;
     font-weight: 400;
     font-style: normal;
+    font-variation-settings:
+        "BLED" 0,
+        "SCAN" -53;
     font-size: clamp(1rem, 1vw, 2rem);
     box-sizing: border-box;
 }
 
-body {
+.main-container {
     height: calc(100dvh - 0rem);
-    height: calc(100dvh - 0rem);
+    height: calc(100vh - 0rem);
+    width: 100vw;
     background-color: rgb(5, 5, 5);
     display: flex;
     flex-direction: column;
@@ -21,17 +28,8 @@ body {
     gap: 0.25rem;
 }
 
-.main {
-    height: fit-content;
-    width: clamp(15rem, 100vw, 20rem);
-    display: flex;
-    flex-direction: column;
-    gap: 0.5rem;
-    align-items: center;
-    justify-content: center;
-}
-
-.title {
+/* --------------------------------------------------------HEADER */
+.header {
     height: fit-content;
     width: clamp(15rem, 100vw, 20rem);
     display: flex;
@@ -47,76 +45,18 @@ body {
     overflow: hidden;
 }
 
-.slider {
-    display: flex;
-    align-items: center;
-    justify-content: center;
+/* ---------------------------------------------------------MAIN */
+.main {
     height: fit-content;
     width: clamp(15rem, 100vw, 20rem);
-    gap: 0.25rem;
-}
-
-.timeContainer {
-    border: 2px solid rgb(78, 100, 61);
-    height: 100%;
-    width: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.slider button {
-    width: 5rem;
-    height: 3rem;
-    background-color: transparent;
-    border: 2px solid rgb(78, 100, 61);
-    cursor: pointer;
-}
-
-.slider button:active {
-    height: 2.9rem;
-    width: 4.8rem;
-}
-
-.slider button:hover {
-    background-color: rgba(78, 100, 61, 0.256);
-}
-
-.buttons {
-    width: 100%;
     display: flex;
     flex-direction: column;
-    align-items: center;
-    justify-content: space-between;
     gap: 0.25rem;
-}
-
-.control {
-    width: 100%;
-    display: flex;
-    flex-direction: row;
     align-items: center;
     justify-content: center;
-    gap: .25rem;
 }
 
-.buttons button {
-    height: 3rem;
-    width: 100%;
-    background-color: transparent;
-    border: 2px solid rgb(78, 100, 61);
-    cursor: pointer;
-}
-
-.buttons button:active {
-    height: 2.9rem;
-    width: 95%;
-}
-
-.buttons button:hover {
-    background-color: rgba(78, 100, 61, 0.256);
-}
-
+/* -------------------------------INPUT FOLDER BUTTON */
 .inputFolder {
     width: 100%;
     display: flex;
@@ -125,13 +65,14 @@ body {
     border: 2px solid rgb(78, 100, 61);
 }
 
-.folderBtn {
+#folderBtn {
     height: 3rem;
     width: 100%;
     display: flex;
     align-items: center;
     justify-content: center;
     cursor: pointer;
+    text-shadow: 0 0 5px rgb(124, 185, 77);
 }
 
 .folderBtn:active {
@@ -143,6 +84,7 @@ body {
     background-color: rgba(78, 100, 61, 0.256);
 }
 
+/* --------------------------------------VISUALIZER BOX */
 .visualizer {
     font-family: 'Consolas', 'Courier New', monospace;
     white-space: pre;
@@ -151,10 +93,185 @@ body {
     overflow: hidden;
     width: clamp(15rem, 100vw, 20rem);
     height: clamp(15rem, 100vh, 20rem);
-    font-size: 0.5rem;
+    font-size: 6pt;
     line-height: 1;
     border: 2px solid rgb(78, 100, 61);
     display: flex;
+    flex-direction: row;
     align-items: center;
     justify-content: center;
+}
+
+/* --------------------------------------TIME BUTTONS */
+.slider {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: fit-content;
+    width: clamp(15rem, 100vw, 20rem);
+    gap: 0.25rem;
+}
+
+.slider button {
+    width: 25%;
+    height: 2rem;
+    background-color: transparent;
+    border: 2px solid rgb(78, 100, 61);
+    cursor: pointer;
+    text-shadow: 0 0 5px rgb(124, 185, 77);
+}
+
+.slider button:active {
+    height: 1.9rem;
+    width: 22.5%;
+}
+
+.slider button:hover {
+    background-color: rgba(78, 100, 61, 0.256);
+}
+
+.timeContainer {
+    border: 2px solid rgb(78, 100, 61);
+    height: 100%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* ----------------------------------------PLAY PAUSE PREV NEXT BUTTONS */
+.buttons {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.25rem;
+
+}
+
+.buttons button:active {
+    height: 2.9rem;
+    width: 95%;
+}
+
+.buttons button:hover {
+    background-color: rgba(78, 100, 61, 0.256);
+}
+
+.control {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: .25rem;
+}
+
+.control button {
+    text-shadow: 0 0 5px rgb(124, 185, 77);
+    height: 3rem;
+    width: 100%;
+    background-color: transparent;
+    border: 2px solid rgb(78, 100, 61);
+    cursor: pointer;
+}
+
+/* ------------------------------------VISUALIZER RESOLUTION BUTTONS */
+.vis-res {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    gap: 0.25rem;
+}
+
+.vis-res button {
+    text-shadow: 0 0 5px rgb(124, 185, 77);
+    height: 2rem;
+    width: 25%;
+    background-color: transparent;
+    border: 2px solid rgb(78, 100, 61);
+    cursor: pointer;
+}
+
+.vis-res button:active {
+    height: 1.9rem;
+    width: 22.5%;
+}
+
+#visRes-text-container {
+    border: 2px solid rgb(78, 100, 61);
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+/* ---------------------------------------------------CRT MONITOR EFFECT */
+
+body {
+    height: 100vh;
+    height: 100dvh;
+    width: 100vw;
+    overflow: clip;
+    text-shadow: 0 0 5px rgb(124, 185, 77);
+}
+
+.main-container {
+    max-width: 98vw;
+    max-height: 98vh;
+
+
+    position: relative;
+    background-color: rgb(0, 5, 0);
+    transform: perspective(1000px) rotateX(0deg) scale(1.04);
+
+}
+
+.crt-overlay {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 1000;
+
+    background:
+        repeating-linear-gradient(transparent 0,
+            rgba(18, 18, 18, 0.389) 1px,
+            transparent 20px);
+    background-size: 100% 100px;
+
+    box-shadow:
+        0 0 100px rgba(0, 0, 0, 0.5) inset,
+        0 0 5px rgba(169, 169, 169, 0.2);
+
+    animation: upToDown 3s linear infinite alternate, crt-flicker 0.25s infinite alternate;
+}
+
+@keyframes crt-flicker {
+    0% {
+        opacity: 0.85;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
+
+@keyframes upToDown {
+
+    0%,
+    100% {
+        transform: translateY(0px);
+    }
+
+    50% {
+        transform: translateY(-3px);
+    }
 }
