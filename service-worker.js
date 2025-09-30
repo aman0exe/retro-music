@@ -1,4 +1,4 @@
-const CACHE_NAME = 'retro-mp3-v1';
+const CACHE_NAME = 'retro-mp3-v2';
 
 const urlsToCache = [
   'index.html',
@@ -51,5 +51,6 @@ self.addEventListener('activate', (event) => {
     })
   );
 });
+
 
 
