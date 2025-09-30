@@ -4,8 +4,8 @@
   "description": "A retro-styled MP3 folder player with offline support.",
   "start_url": "/music_player.html",
   "display": "standalone",
-  "background_color": "#000",
-  "theme_color": "#000",
+  "background_color": "#1c1f25",
+  "theme_color": "#4CAF50",
   "icons": [
     {
       "src": "logo/logo192.png",
@@ -19,4 +19,5 @@
     }
   ]
 }
+
 
