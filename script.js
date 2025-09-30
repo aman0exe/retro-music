@@ -17,10 +17,12 @@ const nextButton = document.getElementById('NextBtn');
 const prevButton = document.getElementById('PrevBtn');
 const rewindButton = document.getElementById('RewindBtn');
 const forwardButton = document.getElementById('ForwardBtn');
+const visualizer = document.querySelector('.visualizer');
+const dec_res = document.getElementById('dec-res')
+const inc_res = document.getElementById('inc-res')
+const visRes_text = document.getElementById('visRes-text');
 
 const audioPlayer = new Audio();
-
-const visualizer = document.querySelector('.visualizer');
 
 let audioCtx = null;
 let analyser = null;
@@ -34,14 +36,18 @@ let shuffledFilenames = [];
 let currentTrackIndex = 0;
 let isReadyToPlay = false;
 
+const FONT_STEP = 2;
+const FFT_SIZES = [8192, 4096, 2048, 1024, 512, 256, 128, 64];
+let currentFftIndex = 3;
+
 function ensureVisualizerInit() {
     if (audioCtx && analyser && sourceNode && dataArray) return true;
 
     try {
         audioCtx = audioCtx || new (window.AudioContext || window.webkitAudioContext)();
         analyser = analyser || audioCtx.createAnalyser();
-        analyser.fftSize = 1024;
-        analyser.smoothingTimeConstant = 0.5;
+        analyser.fftSize = FFT_SIZES[currentFftIndex];
+        analyser.smoothingTimeConstant = 0.6;
 
         const bufferLen = analyser.frequencyBinCount;
         dataArray = dataArray || new Uint8Array(bufferLen);
@@ -359,6 +365,57 @@ function seekTrack(seconds) {
     saveState();
 }
 
+function getCurrentFontSize() {
+    const VisFontSize = window.getComputedStyle(visualizer);
+    const currentSizePx = parseFloat(VisFontSize.fontSize);
+    return currentSizePx;
+}
+
+function changeFontSize(step) {
+    let currentSize = getCurrentFontSize();
+    let newSize = currentSize + step;
+
+    if (newSize < 2) newSize = 2;
+    if (newSize > 16) newSize = 16;
+
+    visualizer.style.fontSize = `${newSize}px`;
+    visRes_text.textContent = `Visualizer Res: ${newSize}pt`
+}
+
+function updateFft(direction) {
+    let newIndex = currentFftIndex + direction;
+
+    if (newIndex < 0) {
+        newIndex = 0;
+    } else if (newIndex >= FFT_SIZES.indexOf(512)) {
+        newIndex = FFT_SIZES.indexOf(512);
+    }
+
+    if (newIndex === currentFftIndex) return;
+
+    currentFftIndex = newIndex;
+    const newFftSize = FFT_SIZES[currentFftIndex];
+
+    if (analyser) {
+        analyser.fftSize = newFftSize;
+
+        dataArray = new Uint8Array(analyser.frequencyBinCount);
+
+        if (!audioPlayer.paused) {
+            stopVisualizer();
+            startVisualizer();
+        }
+    }
+}
+
+function decreaseFftSize() {
+    updateFft(-1);
+}
+
+function increaseFftSize() {
+    updateFft(1);
+}
+
 function handleFolderSelect(event) {
     const selectedFiles = event.target.files;
 
@@ -426,6 +483,22 @@ function init() {
     prevButton.addEventListener('click', prevTrack);
     rewindButton.addEventListener('click', () => seekTrack(-10));
     forwardButton.addEventListener('click', () => seekTrack(10));
+    inc_res.addEventListener('click', () => {
+        if (!audioPlayer.paused) {
+            changeFontSize(FONT_STEP);
+            increaseFftSize()
+        } else {
+            changeFontSize(0);
+        }
+    });
+    dec_res.addEventListener('click', () => {
+        if (!audioPlayer.paused) {
+            changeFontSize(-FONT_STEP);
+            decreaseFftSize()
+        } else {
+            changeFontSize(0);
+        }
+    });
 
     document.addEventListener('keyup', (event) => {
         if (document.activeElement.tagName === 'INPUT' || document.activeElement.tagName === 'BUTTON') return;
@@ -453,4 +526,3 @@ function init() {
 }
 
 init();
-
