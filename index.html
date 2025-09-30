@@ -16,39 +16,44 @@
 </head>
 
 <body>
-    <div class="title">
-        <p id="title">--</p>
-    </div>
-    <div class="main">
-        <div class="inputFolder">
-            <label for="folderInput" class="folderBtn">Select Folder</label>
-            <input id="folderInput" type="file" webkitdirectory directory multiple accept=".mp3" style="display: none;">
+    <div class="main-container">
+        <div class="header">
+            <p id="title">--</p>
         </div>
-    </div>
-    <div class="visualizer"></div>
-    <div class="slider">
-        <button id="RewindBtn" disabled>-10s</button>
-        <div class="timeContainer">
-            <div id="time">-:--/-:--</div>
-        </div>
-        <button id="ForwardBtn" disabled>+10s</button>
-    </div>
-    <div class="main">
-        <div class="buttons">
-            <div class="control">
-                <button id="PrevBtn">Prev</button>
-                <button id="PauseBtn" style="display: none;">Pause</button>
-                <button id="PlayBtn">Play</button>
-                <button id="NextBtn">Next</button>
+        <div class="main">
+            <div class="inputFolder">
+                <label for="folderInput" id="folderBtn">Select Folder</label>
+                <input id="folderInput" type="file" webkitdirectory directory multiple accept=".mp3"
+                    style="display: none;">
             </div>
-
+            <div class="visualizer"></div>
+            <div class="slider">
+                <button id="RewindBtn" disabled>-10s</button>
+                <div class="timeContainer">
+                    <div id="time">-:--/-:--</div>
+                </div>
+                <button id="ForwardBtn" disabled>+10s</button>
+            </div>
+            <div class="buttons">
+                <div class="control">
+                    <button id="PrevBtn">Prev</button>
+                    <button id="PauseBtn" style="display: none;">Pause</button>
+                    <button id="PlayBtn">Play</button>
+                    <button id="NextBtn">Next</button>
+                </div>
+                <div class="vis-res">
+                    <button id="dec-res">-</button>
+                    <div id="visRes-text-container">
+                        <p id="visRes-text">Visualizer Res:</p>
+                    </div>
+                    <button id="inc-res">+</button>
+                </div>
+            </div>
         </div>
     </div>
+
+    <div class="crt-overlay"></div>
     <script src="script.js"></script>
 </body>
 
 </html>
-
-
-
-
