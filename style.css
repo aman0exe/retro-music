@@ -72,7 +72,7 @@
     align-items: center;
     justify-content: center;
     cursor: pointer;
-    text-shadow: 0 0 5px rgb(124, 185, 77);
+    text-shadow: 0 0 5px rgba(124, 185, 77, 0.542);
 }
 
 .folderBtn:active {
@@ -118,7 +118,7 @@
     background-color: transparent;
     border: 2px solid rgb(78, 100, 61);
     cursor: pointer;
-    text-shadow: 0 0 5px rgb(124, 185, 77);
+    text-shadow: 0 0 5px rgba(124, 185, 77, 0.542);
 }
 
 .slider button:active {
@@ -169,7 +169,7 @@
 }
 
 .control button {
-    text-shadow: 0 0 5px rgb(124, 185, 77);
+    text-shadow: 0 0 5px rgba(124, 185, 77, 0.542);
     height: 3rem;
     width: 100%;
     background-color: transparent;
@@ -187,7 +187,7 @@
 }
 
 .vis-res button {
-    text-shadow: 0 0 5px rgb(124, 185, 77);
+    text-shadow: 0 0 5px rgba(124, 185, 77, 0.542);
     height: 2rem;
     width: 25%;
     background-color: transparent;
@@ -217,7 +217,7 @@ body {
     height: 100dvh;
     width: 100vw;
     overflow: clip;
-    text-shadow: 0 0 5px rgb(124, 185, 77);
+    text-shadow: 0 0 5px rgba(124, 185, 77, 0.542);
 }
 
 .main-container {
