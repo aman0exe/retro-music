@@ -1,6 +1,13 @@
 const CACHE_NAME = 'retro-mp3-v1';
 
 const urlsToCache = [
+  'index.html',
+  'style.css',
+  'script.js',
+  'manifest.json',
+  'service-worker.js',
+  'logo/logo512.png',
+  'logo/logo192.png'
 ];
 
 self.addEventListener('install', (event) => {
@@ -44,4 +51,5 @@ self.addEventListener('activate', (event) => {
     })
   );
 });
+
 
