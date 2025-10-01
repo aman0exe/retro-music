@@ -23,7 +23,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: space-around;
+    justify-content: space-evenly;
     padding: 1rem;
     gap: 0.25rem;
 }
@@ -66,7 +66,7 @@
 }
 
 #folderBtn {
-    height: 3rem;
+    height: 2rem;
     width: 100%;
     display: flex;
     align-items: center;
@@ -75,12 +75,12 @@
     text-shadow: 0 0 5px rgba(124, 185, 77, 0.542);
 }
 
-.folderBtn:active {
-    height: 3rem;
-    width: 100%;
+#folderBtn:active {
+    height: 1.9rem;
+    width: calc(100% - 0.1rem);
 }
 
-.folderBtn:hover {
+#folderBtn:hover {
     background-color: rgba(78, 100, 61, 0.256);
 }
 
@@ -95,7 +95,7 @@
     height: clamp(15rem, 100vh, 20rem);
     font-size: 6pt;
     line-height: 1;
-    border: 2px solid rgb(78, 100, 61);
+    border: 2px solid rgba(78, 100, 61);
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -131,7 +131,7 @@
 }
 
 .timeContainer {
-    border: 2px solid rgb(78, 100, 61);
+    border: 2px solid rgba(78, 100, 61);
     height: 100%;
     width: 100%;
     display: flex;
@@ -172,6 +172,7 @@
     text-shadow: 0 0 5px rgba(124, 185, 77, 0.542);
     height: 3rem;
     width: 100%;
+    font-size: 1.75rem;
     background-color: transparent;
     border: 2px solid rgb(78, 100, 61);
     cursor: pointer;
@@ -201,7 +202,7 @@
 }
 
 #visRes-text-container {
-    border: 2px solid rgb(78, 100, 61);
+    border: 2px solid rgba(78, 100, 61);
     width: 100%;
     height: 100%;
     display: flex;
@@ -275,5 +276,3 @@ body {
         transform: translateY(-3px);
     }
 }
-
-

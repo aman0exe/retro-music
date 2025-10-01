@@ -12,7 +12,6 @@
     <link rel="manifest" href="manifest.json">
     <link rel="stylesheet"
         href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0&icon_names=play_arrow" />
-    <link rel="icon" href="favicon.ico" type="image/x-icon">
     <meta name="theme-color" content="#161616">
 </head>
 
@@ -21,13 +20,11 @@
         <div class="header">
             <p id="title">--</p>
         </div>
+
         <div class="main">
-            <div class="inputFolder">
-                <label for="folderInput" id="folderBtn">Select Folder</label>
-                <input id="folderInput" type="file" webkitdirectory directory multiple accept=".mp3"
-                    style="display: none;">
-            </div>
+
             <div class="visualizer"></div>
+
             <div class="slider">
                 <button id="RewindBtn" disabled>-10s</button>
                 <div class="timeContainer">
@@ -50,12 +47,15 @@
                     <button id="inc-res">+</button>
                 </div>
             </div>
+            <div class="inputFolder">
+                <label for="folderInput" id="folderBtn">Select Folder</label>
+                <input id="folderInput" type="file" webkitdirectory directory multiple accept=".mp3"
+                    style="display: none;">
+            </div>
         </div>
     </div>
-
     <div class="crt-overlay"></div>
     <script src="script.js"></script>
 </body>
 
 </html>
-
